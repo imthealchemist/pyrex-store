@@ -39,9 +39,29 @@ const WHATSAPP_NUMBER = "23290078385";
 ```
 
 ## Deploy (so customers can reach it)
-This is a normal Node app. Put it on any Node host (Render, Railway, Koyeb, Fly.io, a VPS…).
-Make sure `data/` and `public/uploads/` are writable. Customers visit your domain; you keep
-the `/admin.html` link private.
+This is a normal Node app (start command `npm start`). Put it on any Node host
+(Render, Railway, Koyeb, Fly.io, a VPS…). After the first deploy, set these
+**environment variables** in your host's dashboard:
+
+- `ADMIN_USER` — your admin username
+- `ADMIN_PASS` — a strong admin password (required, or the admin panel stays locked)
+- `WHATSAPP_NUMBER` — optional, defaults to `23290078385`
+
+### Durable storage with PostgreSQL (recommended for production)
+By default the app stores accounts in a local JSON file, which is lost when a host
+redeploys (ephemeral filesystem). To make posts survive restarts, add a database:
+
+- **Railway:** in your project, click **New → Database → PostgreSQL**. Railway automatically
+  injects a `DATABASE_URL` variable into your service — no other config needed.
+- **Anywhere else:** provision PostgreSQL and set `DATABASE_URL` to its connection string
+  (e.g. `postgres://user:pass@host:5432/db`).
+
+When `DATABASE_URL` is present, the app creates the `accounts` table automatically on first
+run (and seeds the two demo accounts). Both account data **and uploaded photos** are stored
+in Postgres, so nothing is lost on redeploy. When `DATABASE_URL` is absent, it falls back to
+the JSON file for easy local development.
+
+Customers visit your domain; you keep the `/admin.html` link private.
 
 ## Notes
 - Accounts and uploaded photos persist on the server (shared with all visitors).
