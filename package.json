@@ -1,0 +1,12 @@
+{
+  "name": "pyrex-store",
+  "version": "1.0.0",
+  "description": "Pyrex Store - Free Fire accounts & gaming gear marketplace",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}

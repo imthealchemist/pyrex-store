@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Pyrex Store — Admin</title>
+<link rel="stylesheet" href="/style.css" />
+<link rel="icon" href="/assets/favicon.svg" />
+</head>
+<body>
+
+  <!-- LOGIN -->
+  <div id="loginView">
+    <div class="login-card">
+      <h2>PYREX ADMIN</h2>
+      <div class="hint">Owner access only · Game &amp; Tech</div>
+      <form id="loginForm">
+        <label for="user">Username</label>
+        <input id="user" type="text" autocomplete="username" placeholder="admin username" required />
+        <label for="pass">Password</label>
+        <input id="pass" type="password" autocomplete="current-password" placeholder="••••••••" required />
+        <div id="loginErr" style="color:var(--pink);min-height:18px;font-size:13px;margin-top:10px"></div>
+        <button class="btn btn-cyan btn-block" type="submit">Enter Store</button>
+      </form>
+      <div style="text-align:center;margin-top:16px">
+        <a class="btn btn-ghost" href="/" target="_blank" rel="noopener">View Store ↗</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- DASHBOARD -->
+  <div id="dashView" style="display:none">
+    <div class="admin-wrap">
+      <div class="admin-bar">
+        <div class="brand">
+          <svg class="logo" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <polygon points="24,3 43,14 43,34 24,45 5,34 5,14" stroke="#00e5ff" stroke-width="3"/>
+            <circle cx="24" cy="24" r="4" fill="#ff2e88"/>
+          </svg>
+          <span><span class="px">PYREX</span> <span class="store">ADMIN</span></span>
+        </div>
+        <div style="display:flex;gap:10px;align-items:center">
+          <span class="pill" id="who"></span>
+          <a class="btn btn-ghost" href="/" target="_blank" rel="noopener">View Store</a>
+          <button class="btn btn-danger" id="logoutBtn">Logout</button>
+        </div>
+      </div>
+
+      <div class="admin-grid">
+        <!-- ADD / EDIT FORM -->
+        <div class="panel sticky">
+          <h2 id="formTitle" style="margin:0 0 14px;font-size:20px">Add Account</h2>
+          <form id="accForm">
+            <input type="hidden" id="editId" />
+            <label for="img">Account Photo</label>
+            <input id="img" type="file" accept="image/*" />
+            <div class="preview-box" id="preview"><span style="color:var(--muted);font-size:13px">Image preview</span></div>
+
+            <label for="title">Title *</label>
+            <input id="title" type="text" placeholder="e.g. Elite Free Fire Account" required />
+
+            <label for="level">Level / Rank</label>
+            <input id="level" type="text" placeholder="e.g. Level 70 • Diamond" />
+
+            <label for="price">Price (Le) *</label>
+            <input id="price" type="number" min="0" step="1" placeholder="250" required />
+
+            <label for="desc">Description</label>
+            <textarea id="desc" placeholder="Details: skins, characters, diamonds…"></textarea>
+
+            <label style="display:flex;align-items:center;gap:8px;cursor:pointer">
+              <input type="checkbox" id="featured" style="width:auto" /> Mark as Featured
+            </label>
+
+            <div style="display:flex;gap:10px;margin-top:16px">
+              <button class="btn btn-cyan btn-block" type="submit" id="submitBtn">Publish Account</button>
+              <button class="btn btn-ghost" type="button" id="cancelEdit" style="display:none">Cancel</button>
+            </div>
+            <div id="formMsg" style="min-height:18px;font-size:13px;margin-top:10px"></div>
+          </form>
+        </div>
+
+        <!-- LIST -->
+        <div class="panel">
+          <h2 style="margin:0 0 14px;font-size:20px">Listed Accounts</h2>
+          <div class="admin-list" id="adminList">
+            <div class="empty">Loading…</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+  <script src="/admin.js"></script>
+</body>
+</html>

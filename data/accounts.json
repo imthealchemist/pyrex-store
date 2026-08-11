@@ -1,0 +1,22 @@
+[
+  {
+    "id": "76fd0b936bea",
+    "title": "Elite Free Fire Account — Maxed Out",
+    "level": "Level 75 • 90% Booyah",
+    "price": 250,
+    "description": "Fully upgraded characters, rare bundles, 50k+ diamonds worth of skins. Instant handover.",
+    "image": "/assets/demo1.svg",
+    "featured": true,
+    "createdAt": "2026-08-11T12:30:17.600Z"
+  },
+  {
+    "id": "7e26eaf4041e",
+    "title": "Starter Pro Account — Ranked Gold",
+    "level": "Level 45 • Ranked Gold III",
+    "price": 90,
+    "description": "Great secondary account with good pets and emotes. Clean, no bans.",
+    "image": "/assets/demo2.svg",
+    "featured": false,
+    "createdAt": "2026-08-10T15:30:17.600Z"
+  }
+]
