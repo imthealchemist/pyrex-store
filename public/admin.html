@@ -20,7 +20,7 @@
         <label for="pass">Password</label>
         <input id="pass" type="password" autocomplete="current-password" placeholder="••••••••" required />
         <div id="loginErr" style="color:var(--pink);min-height:18px;font-size:13px;margin-top:10px"></div>
-        <button class="btn btn-cyan btn-block" type="submit">Enter Store</button>
+        <button class="btn btn-red btn-block" type="submit">Enter Store</button>
       </form>
       <div style="text-align:center;margin-top:16px">
         <a class="btn btn-ghost" href="/" target="_blank" rel="noopener">View Store ↗</a>
@@ -33,9 +33,9 @@
     <div class="admin-wrap">
       <div class="admin-bar">
         <div class="brand">
-          <svg class="logo" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <polygon points="24,3 43,14 43,34 24,45 5,34 5,14" stroke="#00e5ff" stroke-width="3"/>
-            <circle cx="24" cy="24" r="4" fill="#ff2e88"/>
+          <svg class="logo" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect x="3" y="3" width="42" height="42" rx="12" fill="#e60023"/>
+            <path d="M28 9 L15 27 H23 L20 39 L34 20 H25 Z" fill="#fff"/>
           </svg>
           <span><span class="px">PYREX</span> <span class="store">ADMIN</span></span>
         </div>
@@ -73,7 +73,7 @@
             </label>
 
             <div style="display:flex;gap:10px;margin-top:16px">
-              <button class="btn btn-cyan btn-block" type="submit" id="submitBtn">Publish Account</button>
+              <button class="btn btn-red btn-block" type="submit" id="submitBtn">Publish Account</button>
               <button class="btn btn-ghost" type="button" id="cancelEdit" style="display:none">Cancel</button>
             </div>
             <div id="formMsg" style="min-height:18px;font-size:13px;margin-top:10px"></div>

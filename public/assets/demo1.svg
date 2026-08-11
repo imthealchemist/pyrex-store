@@ -1,24 +1,11 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
-  <defs>
-    <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#0b0f1a"/>
-      <stop offset="1" stop-color="#15103a"/>
-    </linearGradient>
-    <radialGradient id="glow1" cx="0.5" cy="0.4" r="0.6">
-      <stop offset="0" stop-color="#00e5ff" stop-opacity="0.5"/>
-      <stop offset="1" stop-color="#00e5ff" stop-opacity="0"/>
-    </radialGradient>
-  </defs>
-  <rect width="800" height="600" fill="url(#g1)"/>
-  <rect width="800" height="600" fill="url(#glow1)"/>
-  <g opacity="0.25" stroke="#7c4dff" stroke-width="2">
-    <path d="M0 150 L800 90 M0 300 L800 240 M0 450 L800 390"/>
+  <rect width="800" height="600" fill="#ffffff"/>
+  <rect width="800" height="600" fill="#fdf3f4"/>
+  <g transform="translate(400 285)">
+    <polygon points="0,-120 104,-60 104,60 0,120 -104,60 -104,-60" fill="none" stroke="#e60023" stroke-width="8"/>
+    <polygon points="0,-70 60,-35 60,35 0,70 -60,35 -60,-35" fill="none" stroke="#e60023" stroke-width="4"/>
+    <path d="M14 -34 L-12 6 H4 L-2 34 L22 -6 H8 Z" fill="#e60023"/>
+    <text x="0" y="170" fill="#15171c" font-family="Arial Black, Arial" font-size="40" font-weight="900" text-anchor="middle">MAXED OUT</text>
   </g>
-  <g transform="translate(400 300)">
-    <polygon points="0,-120 104,-60 104,60 0,120 -104,60 -104,-60" fill="none" stroke="#00e5ff" stroke-width="6"/>
-    <polygon points="0,-70 60,-35 60,35 0,70 -60,35 -60,-35" fill="none" stroke="#ff2e88" stroke-width="4"/>
-    <circle r="20" fill="#00e5ff"/>
-    <text x="0" y="160" fill="#ffffff" font-family="Arial Black, Arial" font-size="40" font-weight="900" text-anchor="middle">MAXED OUT</text>
-  </g>
-  <text x="40" y="560" fill="#9aa7c7" font-family="Arial" font-size="22">PYREX STORE • FREE FIRE</text>
+  <text x="40" y="560" fill="#6b7280" font-family="Arial" font-size="22">PYREX STORE • FREE FIRE</text>
 </svg>

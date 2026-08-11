@@ -1,24 +1,11 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
-  <defs>
-    <linearGradient id="g2" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#0a0f0c"/>
-      <stop offset="1" stop-color="#10261a"/>
-    </linearGradient>
-    <radialGradient id="glow2" cx="0.5" cy="0.4" r="0.6">
-      <stop offset="0" stop-color="#39ff14" stop-opacity="0.45"/>
-      <stop offset="1" stop-color="#39ff14" stop-opacity="0"/>
-    </radialGradient>
-  </defs>
-  <rect width="800" height="600" fill="url(#g2)"/>
-  <rect width="800" height="600" fill="url(#glow2)"/>
-  <g opacity="0.2" stroke="#39ff14" stroke-width="2">
-    <path d="M0 120 L800 180 M0 360 L800 300 M0 520 L800 480"/>
+  <rect width="800" height="600" fill="#ffffff"/>
+  <rect width="800" height="600" fill="#fdf3f4"/>
+  <g transform="translate(400 285)">
+    <rect x="-110" y="-110" width="220" height="220" rx="24" fill="none" stroke="#e60023" stroke-width="8"/>
+    <rect x="-60" y="-60" width="120" height="120" rx="16" fill="none" stroke="#e60023" stroke-width="4"/>
+    <path d="M14 -34 L-12 6 H4 L-2 34 L22 -6 H8 Z" fill="#e60023"/>
+    <text x="0" y="170" fill="#15171c" font-family="Arial Black, Arial" font-size="38" font-weight="900" text-anchor="middle">RANKED</text>
   </g>
-  <g transform="translate(400 300)">
-    <rect x="-110" y="-110" width="220" height="220" rx="24" fill="none" stroke="#39ff14" stroke-width="6"/>
-    <rect x="-60" y="-60" width="120" height="120" rx="16" fill="none" stroke="#00e5ff" stroke-width="4"/>
-    <circle r="18" fill="#39ff14"/>
-    <text x="0" y="160" fill="#ffffff" font-family="Arial Black, Arial" font-size="38" font-weight="900" text-anchor="middle">RANKED GOLD</text>
-  </g>
-  <text x="40" y="560" fill="#9aa7c7" font-family="Arial" font-size="22">PYREX STORE • FREE FIRE</text>
+  <text x="40" y="560" fill="#6b7280" font-family="Arial" font-size="22">PYREX STORE • FREE FIRE</text>
 </svg>

@@ -65,7 +65,7 @@
         <div class="desc">${esc(a.description || "")}</div>
         <div class="row">
           <div class="price">${formatPrice(a.price)}</div>
-          <a class="btn btn-pink" href="${waLink(msg)}" target="_blank" rel="noopener">Buy</a>
+          <a class="btn btn-red" href="${waLink(msg)}" target="_blank" rel="noopener">Buy</a>
         </div>
       </div>`;
     return el;
@@ -82,5 +82,14 @@
     );
   }
 
+  function initNav() {
+    const t = document.getElementById("navToggle");
+    const l = document.getElementById("navLinks");
+    if (!t || !l) return;
+    t.addEventListener("click", () => l.classList.toggle("open"));
+    l.querySelectorAll("a").forEach((a) => a.addEventListener("click", () => l.classList.remove("open")));
+  }
+
+  initNav();
   init();
 })();
