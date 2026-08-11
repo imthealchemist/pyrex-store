@@ -20,13 +20,16 @@ npm start
 ```
 Open `http://localhost:3000` for the store and `http://localhost:3000/admin.html` for the admin.
 
-## Admin login (change this before going live!)
-- Username: `pyrex`
-- Password: `pyrex123`
+## Admin login (secrets are NOT in the code)
+The admin username/password are read from **environment variables**, never hardcoded:
 
-Edit the top of `server.js` to change them, or use environment variables:
+- Locally: copy `.env.example` to `.env` and fill in your values (`.env` is gitignored).
+- On your host (Render/Railway/Vercel): set `ADMIN_USER` and `ADMIN_PASS` in the dashboard.
+
+If `ADMIN_PASS` is not set, the admin panel is disabled until you set one — so the
+public repo contains no secrets. Example:
 ```bash
-ADMIN_USER=yourname ADMIN_PASS=yourpass node server.js
+ADMIN_USER=pyrex ADMIN_PASS=yourStrongPassword node server.js
 ```
 
 ## Change the WhatsApp number

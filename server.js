@@ -19,11 +19,28 @@ const PUBLIC_DIR = path.join(__dirname, "public");
 const UPLOADS_DIR = path.join(PUBLIC_DIR, "uploads");
 const DATA_FILE = path.join(DATA_DIR, "accounts.json");
 
+// ---------- Load .env (gitignored, local only) ----------
+// Reads .env if present so local dev works without exporting vars.
+// NEVER commit real secrets — use env vars on your host instead.
+(function loadEnv() {
+  try {
+    const txt = fs.readFileSync(path.join(__dirname, ".env"), "utf8");
+    txt.split("\n").forEach((line) => {
+      const m = /^\s*([\w.-]+)\s*=\s*(.*)\s*$/.exec(line);
+      if (m && process.env[m[1]] === undefined) {
+        process.env[m[1]] = m[2].replace(/^["']|["']$/g, "");
+      }
+    });
+  } catch (e) {}
+})();
+
 // ---------- Admin credentials (single owner) ----------
-// CHANGE THESE to your own before going live.
-const ADMIN_USER = process.env.ADMIN_USER || "pyrex";
-const ADMIN_PASS = process.env.ADMIN_PASS || "pyrex123";
-const WHATSAPP_NUMBER = "23290078385"; // +232 90 078385 (no +, no spaces)
+// Secrets come from environment variables (.env locally, or your host's
+// dashboard on Render/Vercel/etc). There is NO hardcoded password.
+// If ADMIN_PASS is not set, the admin panel is disabled until you set one.
+const ADMIN_USER = process.env.ADMIN_USER || "admin";
+const ADMIN_PASS = process.env.ADMIN_PASS || "";
+const WHATSAPP_NUMBER = process.env.WHATSAPP_NUMBER || "23290078385"; // +232 90 078385
 
 // In-memory set of valid session tokens (simple, single-owner auth)
 const validTokens = new Set();
