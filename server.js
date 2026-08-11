@@ -218,12 +218,26 @@ app.use(express.static(PUBLIC_DIR));
 // ---------- API ----------
 app.get("/api/config", (req, res) => res.json({ whatsapp: WHATSAPP_NUMBER, store: "Pyrex Store" }));
 
-// Diagnostic: reports only booleans (never secret values)
-app.get("/api/env-status", (req, res) => res.json({
-  adminUserSet: !!process.env.ADMIN_USER,
-  adminPassSet: !!process.env.ADMIN_PASS,
-  storage: USE_DB ? "postgres" : "file",
-}));
+// Diagnostic: reports booleans + a redacted DB connection result (never secrets)
+function redact(s) {
+  return String(s)
+    .replace(/:([^:@\/]+):([^@\s]+)@/g, ":****:****@")
+    .replace(/password=[^&\s]*/gi, "password=****");
+}
+app.get("/api/env-status", async (req, res) => {
+  let dbConnected = false, dbError = null;
+  if (USE_DB) {
+    try { await ensureReady(); await pool.query("SELECT 1"); dbConnected = true; }
+    catch (e) { dbError = redact(e && e.message ? e.message : e); }
+  }
+  res.json({
+    adminUserSet: !!process.env.ADMIN_USER,
+    adminPassSet: !!process.env.ADMIN_PASS,
+    storage: USE_DB ? "postgres" : "file",
+    dbConnected,
+    dbError,
+  });
+});
 
 app.get("/api/accounts", async (req, res) => {
   try { res.json(await loadAccounts()); }
