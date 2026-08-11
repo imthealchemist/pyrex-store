@@ -205,6 +205,13 @@ app.use(express.static(PUBLIC_DIR));
 // ---------- API ----------
 app.get("/api/config", (req, res) => res.json({ whatsapp: WHATSAPP_NUMBER, store: "Pyrex Store" }));
 
+// Diagnostic: reports only booleans (never secret values)
+app.get("/api/env-status", (req, res) => res.json({
+  adminUserSet: !!process.env.ADMIN_USER,
+  adminPassSet: !!process.env.ADMIN_PASS,
+  storage: USE_DB ? "postgres" : "file",
+}));
+
 app.get("/api/accounts", async (req, res) => {
   try { res.json(await loadAccounts()); }
   catch (e) { res.status(500).json({ ok: false, error: "storage unavailable" }); }
