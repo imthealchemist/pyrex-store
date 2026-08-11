@@ -46,7 +46,10 @@ function resolveDatabaseUrl() {
       : null)
   );
 }
-const DATABASE_URL = resolveDatabaseUrl();
+const DATABASE_URL = (resolveDatabaseUrl() || "")
+  .trim()
+  .replace(/^["']|["']$/g, "")
+  .replace(/\r?\n/g, "");
 const USE_DB = !!DATABASE_URL;
 let pool = null;
 if (USE_DB) {
