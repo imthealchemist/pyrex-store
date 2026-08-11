@@ -34,12 +34,25 @@ const ADMIN_PASS = process.env.ADMIN_PASS || "";
 const WHATSAPP_NUMBER = process.env.WHATSAPP_NUMBER || "23290078385"; // +232 90 078385
 
 // ---------- Storage backend ----------
-const USE_DB = !!process.env.DATABASE_URL;
+// Accept whatever the host provides: DATABASE_URL, POSTGRES_URL, or the
+// individual POSTGRES_* vars (Railway injects the POSTGRES_* form).
+function resolveDatabaseUrl() {
+  return (
+    process.env.DATABASE_URL ||
+    process.env.POSTGRES_URL ||
+    process.env.POSTGRES_PRIVATE_URL ||
+    (process.env.POSTGRES_HOST
+      ? `postgresql://${process.env.POSTGRES_USER || "postgres"}:${process.env.POSTGRES_PASSWORD || ""}@${process.env.POSTGRES_HOST}:${process.env.POSTGRES_PORT || 5432}/${process.env.POSTGRES_DATABASE || "railway"}`
+      : null)
+  );
+}
+const DATABASE_URL = resolveDatabaseUrl();
+const USE_DB = !!DATABASE_URL;
 let pool = null;
 if (USE_DB) {
   const { Pool } = require("pg");
   pool = new Pool({
-    connectionString: process.env.DATABASE_URL,
+    connectionString: DATABASE_URL,
     ssl: { rejectUnauthorized: false },
   });
 }
